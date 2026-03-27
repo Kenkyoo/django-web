@@ -2,12 +2,20 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Author, Genre, Book, BookInstance
+from .models import Author, Genre, Book, BookInstance, Language
 
 # admin.site.register(Book)
 # admin.site.register(Author)
-admin.site.register(Genre)
+# admin.site.register(Genre)
 # admin.site.register(BookInstance)
+
+
+admin.site.register(Genre)
+admin.site.register(Language)
+
+class BooksInline(admin.TabularInline):
+    """Defines format of inline book insertion (used in AuthorAdmin)"""
+    model = Book
 
 # Define the admin class
 class AuthorAdmin(admin.ModelAdmin):
@@ -40,6 +48,6 @@ class BookInstanceAdmin(admin.ModelAdmin):
             'fields': ('book', 'imprint', 'id')
         }),
         ('Availability', {
-            'fields': ('status', 'due_back')
+            'fields': ('status', 'due_back', 'borrower')
         }),
     )
