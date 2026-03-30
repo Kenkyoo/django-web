@@ -15,11 +15,14 @@ def index(request):
     num_instances_available=BookInstance.objects.filter(status__exact='a').count()
     num_authors=Author.objects.count()  # El 'all()' esta implícito por defecto.
 
+    num_visits = request.session.get('num_visits', 0)
+    num_visits += 1
+    request.session['num_visits'] = num_visits
     # Renderiza la plantilla HTML index.html con los datos en la variable contexto
     return render(
         request,
         'index.html',
-        context={'num_books':num_books,'num_instances':num_instances,'num_instances_available':num_instances_available,'num_authors':num_authors},
+        context={'num_books':num_books,'num_instances':num_instances,'num_visits':num_visits,'num_instances_available':num_instances_available,'num_authors':num_authors},
     )
 
 class BookListView(generic.ListView):
