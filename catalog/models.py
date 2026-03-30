@@ -4,7 +4,7 @@ from django.urls import reverse  # To generate URLS by reversing URL patterns
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
 from datetime import date
-
+from django.contrib.auth.models import User
 from django.conf import settings
 # Create your models here.
 
