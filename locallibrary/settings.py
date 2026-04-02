@@ -29,7 +29,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'cg#p$g+j9tax!#a3cup@1$8obt2_+&
 
 DEBUG = bool( os.environ.get('DJANGO_DEBUG', True) )
 
+<<<<<<< HEAD
 ALLOWED_HOSTS = ['django-web-odmy.onrender.com']
+=======
+ALLOWED_HOSTS = ['django-web-odmy.onrender.com', '127.0.0.1']
+>>>>>>> 36bddbd (add url to allow hosts)
 
 
 # Application definition
@@ -42,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'catalog.apps.CatalogConfig',
+    'django_bootstrap5',
 ]
 
 MIDDLEWARE = [
